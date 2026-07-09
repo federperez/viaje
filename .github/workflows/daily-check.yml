@@ -24,7 +24,9 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Restaurar credenciales de Google
-        run: echo "${{ secrets.GOOGLE_CREDENTIALS_JSON }}" > credentials.json
+        env:
+          GOOGLE_CREDS: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+        run: printf '%s' "$GOOGLE_CREDS" > credentials.json
 
       - name: Correr el chequeo
         run: python main.py
