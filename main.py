@@ -5,7 +5,6 @@ Orquesta el chequeo diario:
 3. Calcula y registra la mejor oferta del día
 """
 import re
-import sys
 from datetime import datetime
 
 from playwright.sync_api import sync_playwright
@@ -59,7 +58,7 @@ def run():
 
     if not todos_los_resultados:
         print("No se obtuvo ningún resultado de ningún sitio. Revisá /debug para diagnosticar.")
-        sys.exit(1)
+        return
 
     # Guardar historial completo
     filas = [r.as_row(fecha_chequeo) for r in todos_los_resultados]
